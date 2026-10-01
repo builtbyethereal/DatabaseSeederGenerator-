@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Free online database seeder generator. Create realistic sample SQL, JSON, CSV, JavaScript, and Laravel seed data directly in your browser.">
+  <meta name="theme-color" content="#ffcf3f">
+  <meta property="og:title" content="Database Seeder Generator - Generate Sample Data Online">
+  <meta property="og:description" content="Create realistic sample SQL, JSON, CSV, JavaScript, and Laravel seed data directly in your browser.">
+  <meta property="og:type" content="website">
+  <title>Database Seeder Generator - Generate Sample Data Online</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Database Seeder Generator home">
+        <span class="brand-badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="12" cy="5.5" rx="6.5" ry="2.75" stroke="currentColor" stroke-width="1.8"/>
+            <path d="M5.5 5.5v6c0 1.52 2.91 2.75 6.5 2.75s6.5-1.23 6.5-2.75v-6M5.5 11.5v6c0 1.52 2.91 2.75 6.5 2.75s6.5-1.23 6.5-2.75v-6" stroke="currentColor" stroke-width="1.8"/>
+          </svg>
+        </span>
+        <span>Database Seeder Generator</span>
+      </a>
+      <div class="nav-actions">
+        <button class="theme-toggle" type="button" id="themeToggle" aria-label="Switch to dark mode" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true">
+            <svg class="sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 4V2.75M12 21.25V20M17.66 6.34l.88-.88M5.46 18.54l.88-.88M20 12h1.25M2.75 12H4M17.66 17.66l.88.88M5.46 5.46l.88.88M12 16.25A4.25 4.25 0 1 0 12 7.75a4.25 4.25 0 0 0 0 8.5Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+            </svg>
+            <svg class="moon-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.2 14.85A7.75 7.75 0 0 1 9.15 3.8 8.65 8.65 0 1 0 20.2 14.85Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <span id="themeLabel">Light</span>
+        </button>
+        <a class="studio-logo-link" href="#" aria-label="Ethereal Studios">
+          <img src="assets/logo-icon.png" alt="Ethereal Studios logo">
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="page">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">Cartoon-powered test data lab</p>
+      <h1 id="page-title">Database Seeder Generator</h1>
+      <p class="intro-text">Generate realistic sample records for databases, APIs, testing, and development.</p>
+      <p class="privacy-pill">
+        <svg viewBox="0 0 24 24" width="17" height="17" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3.25 5.75 5.6v5.25c0 4.1 2.6 7.78 6.25 9.05 3.65-1.27 6.25-4.95 6.25-9.05V5.6L12 3.25Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+          <path d="m9.25 12.05 1.85 1.85 3.85-4.05" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Everything is generated locally in your browser.
+      </p>
+    </section>
+
+    <section class="app-shell" aria-label="Database seeder generator">
+      <div class="top-grid">
+        <section class="panel settings-panel" aria-labelledby="settingsTitle">
+          <div class="panel-heading">
+            <h2 id="settingsTitle">Generator Settings</h2>
+            <span class="cartoon-dot" aria-hidden="true"></span>
+          </div>
+          <div class="settings-grid">
+            <div class="field">
+              <label for="tableName">Table name</label>
+              <input id="tableName" type="text" value="users" autocomplete="off" spellcheck="false">
+            </div>
+            <div class="field">
+              <label for="recordCount">Records</label>
+              <input id="recordCount" type="number" min="1" max="10000" value="10">
+            </div>
+            <div class="field">
+              <label for="outputFormat">Output format</label>
+              <select id="outputFormat">
+                <option value="sql">SQL INSERT</option>
+                <option value="json">JSON</option>
+                <option value="csv">CSV</option>
+                <option value="javascript">JavaScript Array</option>
+                <option value="laravel">Laravel Seeder</option>
+              </select>
+            </div>
+            <div class="field" id="dialectField">
+              <label for="sqlDialect">SQL dialect</label>
+              <select id="sqlDialect">
+                <option value="mysql">MySQL</option>
+                <option value="postgres">PostgreSQL</option>
+                <option value="sqlite">SQLite</option>
+                <option value="generic">Generic SQL</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="randomSeed">Random seed</label>
+              <input id="randomSeed" type="number" placeholder="12345">
+            </div>
+            <div class="field">
+              <label for="templateSelect">Load Template</label>
+              <div class="inline-control">
+                <select id="templateSelect">
+                  <option value="users">Users</option>
+                  <option value="products">Products</option>
+                  <option value="orders">Orders</option>
+                  <option value="employees">Employees</option>
+                  <option value="api">API Test Data</option>
+                </select>
+                <button class="mini-button" type="button" id="loadTemplateButton">Load</button>
+              </div>
+            </div>
+          </div>
+          <div class="action-row">
+            <button class="button button-primary" type="button" id="generateButton">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 3.5v17M5.5 7.5h13M7.5 12h9M5.5 16.5h13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+              Generate Data
+            </button>
+            <button class="button" type="button" id="resetButton">Reset</button>
+          </div>
+        </section>
+
+        <section class="panel stats-panel" aria-label="Generation statistics">
+          <article class="stat-card">
+            <span>Records</span>
+            <output id="statRecords">0</output>
+          </article>
+          <article class="stat-card">
+            <span>Fields</span>
+            <output id="statFields">0</output>
+          </article>
+          <article class="stat-card">
+            <span>Output Size</span>
+            <output id="statSize">0 B</output>
+          </article>
+          <article class="stat-card">
+            <span>Generation Time</span>
+            <output id="statTime">0 ms</output>
+          </article>
+        </section>
+      </div>
+
+      <div class="message-box" id="messageBox" role="alert" hidden></div>
+
+      <section class="panel fields-panel" aria-labelledby="fieldsTitle">
+        <div class="panel-heading split-heading">
+          <div>
+            <h2 id="fieldsTitle">Fields</h2>
+            <p>Configure columns, types, nulls, uniqueness, and field-specific options.</p>
+          </div>
+          <button class="button button-small" type="button" id="addFieldButton">+ Add Field</button>
+        </div>
+        <div class="field-list" id="fieldList" aria-live="polite"></div>
+      </section>
+
+      <section class="panel output-panel" aria-labelledby="outputTitle">
+        <div class="panel-heading split-heading">
+          <div>
+            <h2 id="outputTitle">Generated Data</h2>
+            <p id="previewSummary">Generate data to see a preview.</p>
+          </div>
+          <div class="output-actions">
+            <button class="mini-button" type="button" id="copyButton">Copy</button>
+            <button class="mini-button" type="button" id="downloadButton">Download</button>
+            <button class="mini-button" type="button" id="selectAllButton">Select All</button>
+            <button class="mini-button" type="button" id="regenerateButton">Regenerate</button>
+          </div>
+        </div>
+        <div class="preview-wrap" id="previewWrap"></div>
+        <textarea id="outputText" spellcheck="false" readonly placeholder="Generated seed data will appear here..."></textarea>
+        <p class="format-note" id="formatNote">Generated data is intended for development and testing. Review it before using it in real database environments.</p>
+      </section>
+
+      <p class="local-notice">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7.75 10V8.25a4.25 4.25 0 0 1 8.5 0V10M6.75 10h10.5A1.75 1.75 0 0 1 19 11.75v6.5A1.75 1.75 0 0 1 17.25 20H6.75A1.75 1.75 0 0 1 5 18.25v-6.5A1.75 1.75 0 0 1 6.75 10Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+        </svg>
+        All sample data is generated locally in your browser. Nothing is uploaded or stored.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <img src="assets/ethereal-studios-logo.png" alt="Ethereal Studios" class="footer-logo">
+      <p>Database Seeder Generator &copy; Ethereal Studios. Fast, private and free.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
