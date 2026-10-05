@@ -2,6 +2,8 @@
 
 A private, browser-based database seeder generator for creating realistic sample data for development and testing.
 
+Built by [Ethereal Studios](https://builtbyethereal.com/).
+
 ## Features
 
 - Generate seed data directly in the browser
